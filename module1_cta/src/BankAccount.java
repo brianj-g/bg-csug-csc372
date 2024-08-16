@@ -1,3 +1,6 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  * Class represents a bank account with first/last name, account ID, and current balance
  */
@@ -27,6 +30,9 @@ public class BankAccount {
 	 * @param amount The amount to subtract
 	 */
 	public void Withdrawal(double amount) {
+		if (amount > balance) {
+			throw new IllegalArgumentException("Insufficient funds");
+		}
 		this.balance -= amount;
 	}
 	
@@ -35,7 +41,12 @@ public class BankAccount {
 	 * @return Returns the current balance
 	 */
 	public double getBalance() {
-		return this.balance;
+		/**
+		 * Use a BigDecimal object to ensure the returned value is properly rounded.
+		 */
+		BigDecimal balanceToRound = new BigDecimal(Double.toString(this.balance));
+		balanceToRound = balanceToRound.setScale(2, RoundingMode.HALF_EVEN);
+		return balanceToRound.doubleValue();
 	}
 
 	/**
@@ -87,7 +98,7 @@ public class BankAccount {
 		System.out.println("First Name: " + firstName);
 		System.out.println("Last Name: " + lastName);
 		System.out.println("Account ID: " + accountID);
-		System.out.printf("Balance: %.2f\n", balance);
+		System.out.printf("Balance: %.2f\n", getBalance());
 	}
 	
 }

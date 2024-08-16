@@ -8,7 +8,7 @@ public class BankTest {
 	// Test 1: BankAccount
 		BankAccount myBankAccount = new BankAccount();
 		double amountToAdd = 100.0;
-		double amountToSubtract = 25.0;
+		double amountToSubtract = 75.0;
 		double testBalance = 0.00;
 		
 		// Set name and ID
@@ -28,9 +28,14 @@ public class BankTest {
 		
 		// Test withdrawal method
 		System.out.print("Testing withdrawl: ");
-		myBankAccount.Withdrawal(amountToSubtract);
 		testBalance -= amountToSubtract;
+		try {
+			myBankAccount.Withdrawal(amountToSubtract);
+		} catch(IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 		checkMethod(myBankAccount.getBalance(), testBalance);
+
 		
 		// Test the summary method
 		myBankAccount.accountSummary();
