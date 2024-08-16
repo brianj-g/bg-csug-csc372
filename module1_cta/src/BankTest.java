@@ -1,3 +1,6 @@
+/**
+ * Contains rudimentary unit tests for BankAccount and CheckingAccount classes
+ */
 public class BankTest {
 	
 	public static void main(String[] args) {

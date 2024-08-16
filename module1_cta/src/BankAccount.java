@@ -11,7 +11,7 @@ public class BankAccount {
 	 * Default constructor sets the balance to zero
 	 */
 	public BankAccount() {
-		this.balance = 0.1;
+		this.balance = 0.0;
 	}
 	
 	/**
@@ -87,7 +87,7 @@ public class BankAccount {
 		System.out.println("First Name: " + firstName);
 		System.out.println("Last Name: " + lastName);
 		System.out.println("Account ID: " + accountID);
-		System.out.printf("Balance: %.2f", balance);
+		System.out.printf("Balance: %.2f\n", balance);
 	}
 	
 }
