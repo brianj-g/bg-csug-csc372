@@ -1,3 +1,6 @@
+/**
+ * Class represents a bank account with first/last name, account ID, and current balance
+ */
 public class BankAccount {
 	private String firstName;
 	private String lastName;
@@ -8,7 +11,7 @@ public class BankAccount {
 	 * Default constructor sets the balance to zero
 	 */
 	public BankAccount() {
-		this.balance = 0.0;
+		this.balance = 0.1;
 	}
 	
 	/**
@@ -77,11 +80,14 @@ public class BankAccount {
 		this.accountID = accountID;
 	}
 	
+	/**
+	 * Prints the account details
+	 */
 	public void accountSummary() {
 		System.out.println("First Name: " + firstName);
 		System.out.println("Last Name: " + lastName);
 		System.out.println("Account ID: " + accountID);
-		System.out.println("Balance: " + balance);
+		System.out.printf("Balance: %.2f", balance);
 	}
 	
 }
