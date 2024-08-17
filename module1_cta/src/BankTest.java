@@ -5,13 +5,23 @@ public class BankTest {
 	
 	public static void main(String[] args) {
 		
-	// Unit tests for BankAccount and CheckingAccount
-		BankAccount myBankAccount = new BankAccount();
-		CheckingAccount myCheckingAccount = new CheckingAccount(0.0075);
 		double amountToAdd = 100.0;
 		double amountToSubtract = 75.0;
 		double amountOverdraft = 500.00;
 		double testBalance = 0.00;
+		BankAccount myBankAccount = null;
+		myBankAccount = new BankAccount();
+		
+		CheckingAccount myCheckingAccount = null;
+		try {
+			myCheckingAccount = new CheckingAccount(-0.0075);
+		} catch(IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			System.out.println("Using a fallback value for interest rate.");
+			myCheckingAccount = new CheckingAccount(0.001);
+		}
+		
+	// Unit tests for BankAccount and CheckingAccount
 		
 		// Set name and ID
 		myBankAccount.setFirstName("Brian");
@@ -44,7 +54,7 @@ public class BankTest {
 		System.out.println();
 		
 		// Test withdrawal method
-		System.out.println("*** Testing withdrawl ***");
+		System.out.println("*** Testing withdrawal ***");
 		testBalance -= amountToSubtract;
 		System.out.print("BankAccount: ");
 		try {

@@ -39,6 +39,9 @@ public class CheckingAccount extends BankAccount {
 	 * @param interestRate Sets the interest rate
 	 */
 	public void setInterestRate(double interestRate) {
+		if (interestRate < 0) {
+			throw new IllegalArgumentException("Interest rate must be a positive decimal value");
+		}
 		this.interestRate = interestRate;
 	}
 
@@ -50,9 +53,12 @@ public class CheckingAccount extends BankAccount {
 	}
 
 	/**
-	 * @param overdraftFee Sets the overdraft fee
+	 * @param overdraftFee Changes the overdraft fee
 	 */
 	public void setOverdraftFee(double overdraftFee) {
+		if (overdraftFee < 0) {
+			throw new IllegalArgumentException("Overdraft fee must be a positive decimal value");
+		}
 		this.overdraftFee = overdraftFee;
 	}
 	
@@ -61,7 +67,7 @@ public class CheckingAccount extends BankAccount {
 	 */
 	public void displayAccount() {
 		super.accountSummary();
-		System.out.printf("Interest Rate: %.2f%%\n", (interestRate*100.0));
+		System.out.printf("Interest Rate: %.2f%%\n", (interestRate * 100.0));
 		System.out.printf("Overdraft Cost: $%.2f\n", overdraftFee);
 	}
 

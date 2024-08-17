@@ -1,6 +1,3 @@
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 /**
  * Class represents a bank account with first/last name, account ID, and current balance
  */
@@ -22,6 +19,9 @@ public class BankAccount {
 	 * @param amount The amount to add
 	 */
 	public void deposit(double amount) {
+		if (amount < 0) {
+			throw new IllegalArgumentException("Deposit cannot be negative");
+		}
 		this.balance += amount;
 	}
 	
@@ -41,12 +41,7 @@ public class BankAccount {
 	 * @return Returns the current balance
 	 */
 	public double getBalance() {
-		/**
-		 * Use a BigDecimal object to ensure the returned value is properly rounded.
-		 */
-		BigDecimal balanceToRound = new BigDecimal(Double.toString(this.balance));
-		balanceToRound = balanceToRound.setScale(2, RoundingMode.HALF_EVEN);
-		return balanceToRound.doubleValue();
+		return this.balance;
 	}
 	
 	/**
@@ -97,6 +92,9 @@ public class BankAccount {
 	 * @param accountID Sets the account ID
 	 */
 	public void setAccountID(int accountID) {
+		if (accountID < 1) {
+			throw new IllegalArgumentException("accountID must be set to a postitive integer value");
+		}
 		this.accountID = accountID;
 	}
 	
