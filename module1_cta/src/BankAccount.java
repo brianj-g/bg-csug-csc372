@@ -21,7 +21,7 @@ public class BankAccount {
 	 * Adds parameter value to existing balance
 	 * @param amount The amount to add
 	 */
-	public void Deposit(double amount) {
+	public void deposit(double amount) {
 		this.balance += amount;
 	}
 	
@@ -29,7 +29,7 @@ public class BankAccount {
 	 * Subtracts parameter value from existing balance
 	 * @param amount The amount to subtract
 	 */
-	public void Withdrawal(double amount) {
+	public void withdrawal(double amount) {
 		if (amount > balance) {
 			throw new IllegalArgumentException("Insufficient funds");
 		}

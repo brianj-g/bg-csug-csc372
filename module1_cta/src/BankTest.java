@@ -22,7 +22,7 @@ public class BankTest {
 		
 		// Test deposit method
 		System.out.print("Testing deposit: ");
-		myBankAccount.Deposit(amountToAdd);
+		myBankAccount.deposit(amountToAdd);
 		testBalance += amountToAdd;
 		checkMethod(myBankAccount.getBalance(), testBalance);
 		
@@ -30,7 +30,7 @@ public class BankTest {
 		System.out.print("Testing withdrawl: ");
 		testBalance -= amountToSubtract;
 		try {
-			myBankAccount.Withdrawal(amountToSubtract);
+			myBankAccount.withdrawal(amountToSubtract);
 		} catch(IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
