@@ -24,12 +24,12 @@ public class BankTest {
 	// Unit tests for BankAccount and CheckingAccount
 		
 		// Set name and ID
-		myBankAccount.setFirstName("Brian");
-		myBankAccount.setLastName("Gunther");
+		myBankAccount.setFirstName("Test");
+		myBankAccount.setLastName("Account");
 		myBankAccount.setAccountID(999);
 		
-		myCheckingAccount.setFirstName("Brian");
-		myCheckingAccount.setLastName("Gunther");
+		myCheckingAccount.setFirstName("Test");
+		myCheckingAccount.setLastName("Account");
 		myCheckingAccount.setAccountID(999);
 		
 		// Initial balance should be zero

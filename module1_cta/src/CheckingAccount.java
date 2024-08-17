@@ -70,6 +70,4 @@ public class CheckingAccount extends BankAccount {
 		System.out.printf("Interest Rate: %.2f%%\n", (interestRate * 100.0));
 		System.out.printf("Overdraft Cost: $%.2f\n", overdraftFee);
 	}
-
-	
 }

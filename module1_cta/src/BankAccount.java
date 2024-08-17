@@ -105,7 +105,7 @@ public class BankAccount {
 		System.out.println("First Name: " + firstName);
 		System.out.println("Last Name: " + lastName);
 		System.out.println("Account ID: " + accountID);
-		System.out.printf("Balance: %.2f\n", getBalance());
+		System.out.printf("Balance: $%.2f\n", getBalance());
 	}
 	
 }
