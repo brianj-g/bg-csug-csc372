@@ -1,3 +1,13 @@
+/*
+ * Module 1 CTA Option #1: Implementing a superclass bank account
+ * Brian Gunther
+ * CSC372: Programming II
+ * Colorado State University Global
+ * Dr. Vanessa Cooper
+ * August 18, 2024
+ * 
+ */
+
 /**
  * Class represents a bank account with first/last name, account ID, and current balance
  */

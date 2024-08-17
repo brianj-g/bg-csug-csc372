@@ -1,3 +1,13 @@
+/*
+ * Module 1 CTA Option #1: Implementing a superclass bank account
+ * Brian Gunther
+ * CSC372: Programming II
+ * Colorado State University Global
+ * Dr. Vanessa Cooper
+ * August 18, 2024
+ * 
+ */
+
 public class CheckingAccount extends BankAccount {
 	private double interestRate = 0.01;
 	private double overdraftFee = 30.0;

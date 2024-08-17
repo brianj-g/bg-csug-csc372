@@ -1,3 +1,13 @@
+/*
+ * Module 1 CTA Option #1: Implementing a superclass bank account
+ * Brian Gunther
+ * CSC372: Programming II
+ * Colorado State University Global
+ * Dr. Vanessa Cooper
+ * August 18, 2024
+ * 
+ */
+
 /**
  * Contains rudimentary unit tests for BankAccount and CheckingAccount classes
  */
@@ -14,7 +24,7 @@ public class BankTest {
 		
 		CheckingAccount myCheckingAccount = null;
 		try {
-			myCheckingAccount = new CheckingAccount(-0.0075);
+			myCheckingAccount = new CheckingAccount(0.0075);
 		} catch(IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 			System.out.println("Using a fallback value for interest rate.");
