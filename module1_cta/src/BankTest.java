@@ -5,10 +5,12 @@ public class BankTest {
 	
 	public static void main(String[] args) {
 		
-	// Test 1: BankAccount
+	// Unit tests for BankAccount and CheckingAccount
 		BankAccount myBankAccount = new BankAccount();
+		CheckingAccount myCheckingAccount = new CheckingAccount(0.05);
 		double amountToAdd = 100.0;
 		double amountToSubtract = 75.0;
+		double amountOverdraft = 500.00;
 		double testBalance = 0.00;
 		
 		// Set name and ID

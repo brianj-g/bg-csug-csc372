@@ -6,6 +6,7 @@ public class CheckingAccount extends BankAccount {
 	
 	public CheckingAccount(double interestRate) {
 		this.setInterestRate(interestRate);
+		System.out.printf("A new BankAccount has been opened with balance of %.2f at %.4f interest rate.\n", getBalance(), this.interestRate);
 	}
 	
 	/**
@@ -15,12 +16,16 @@ public class CheckingAccount extends BankAccount {
 	@Override
 	public void withdrawal(double amount) {
 		if (amount > getBalance()) {
-			// FIXME
+			processWithdrawal(amount);
+		} else {
+			setBalance(getBalance() - amount);
 		}
 	}
 	
 	public void processWithdrawal(double amount) {
-		//FIXME
+		setBalance(getBalance() - (amount + overdraftFee));
+		System.out.println("Account is overdrawn. A fee of $" + overdraftFee + " has been assessed." );
+		System.out.println("Current Balance: " + getBalance());
 	}
 
 

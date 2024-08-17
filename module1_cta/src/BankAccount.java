@@ -48,6 +48,15 @@ public class BankAccount {
 		balanceToRound = balanceToRound.setScale(2, RoundingMode.HALF_EVEN);
 		return balanceToRound.doubleValue();
 	}
+	
+	/**
+	 * 
+	 * @param balance Sets the balance to value of the parameter.
+	 * This method is set to protected since it should only be used by the CheckingAccount subclass
+	 */
+	protected void setBalance(double balance) {
+		this.balance = balance;
+	}
 
 	/**
 	 * @return Returns the first name
