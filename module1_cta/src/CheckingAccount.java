@@ -1,17 +1,13 @@
 public class CheckingAccount extends BankAccount {
-	private double interestRate;
-	
-	// Constant overdraftFee is set here
-	private final double overdraftFee = 30.0;
+	private double interestRate = 0.01;
+	private double overdraftFee = 30.0;
 	
 	public CheckingAccount(double interestRate) {
 		this.setInterestRate(interestRate);
-		System.out.printf("A new BankAccount has been opened with balance of %.2f at %.4f interest rate.\n", getBalance(), this.interestRate);
 	}
 	
 	/**
-	 * Subtracts parameter from existing balance, and applies overdraft fee if 
-	 * withdrawal amount is greater than the balance.
+	 * Subtracts parameter from existing balance.  Calls processWithdrawal if the account is overdrawn.
 	 */
 	@Override
 	public void withdrawal(double amount) {
@@ -22,24 +18,52 @@ public class CheckingAccount extends BankAccount {
 		}
 	}
 	
+	/**
+	 * @param amount Processes a withdrawal with an overdraft fee applied.
+	 */
 	public void processWithdrawal(double amount) {
 		setBalance(getBalance() - (amount + overdraftFee));
-		System.out.println("Account is overdrawn. A fee of $" + overdraftFee + " has been assessed." );
-		System.out.println("Current Balance: " + getBalance());
+		System.out.printf("Account is overdrawn. A fee of $%.2f has been assessed.\n", overdraftFee);
+		System.out.printf("Current Balance: %.2f\n", getBalance());
 	}
 
 
 	/**
-	 * @return the interestRate
+	 * @return Returns the interest rate 
 	 */
 	public double getInterestRate() {
 		return interestRate;
 	}
 
 	/**
-	 * @param interestRate the interestRate to set
+	 * @param interestRate Sets the interest rate
 	 */
 	public void setInterestRate(double interestRate) {
 		this.interestRate = interestRate;
 	}
+
+	/**
+	 * @return Returns the overdraft fee
+	 */
+	public double getOverdraftFee() {
+		return overdraftFee;
+	}
+
+	/**
+	 * @param overdraftFee Sets the overdraft fee
+	 */
+	public void setOverdraftFee(double overdraftFee) {
+		this.overdraftFee = overdraftFee;
+	}
+	
+	/**
+	 * Displays all account information including superclass fields
+	 */
+	public void displayAccount() {
+		super.accountSummary();
+		System.out.printf("Interest Rate: %.2f%%\n", (interestRate*100.0));
+		System.out.printf("Overdraft Cost: $%.2f\n", overdraftFee);
+	}
+
+	
 }

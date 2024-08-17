@@ -7,7 +7,7 @@ public class BankTest {
 		
 	// Unit tests for BankAccount and CheckingAccount
 		BankAccount myBankAccount = new BankAccount();
-		CheckingAccount myCheckingAccount = new CheckingAccount(0.05);
+		CheckingAccount myCheckingAccount = new CheckingAccount(0.0075);
 		double amountToAdd = 100.0;
 		double amountToSubtract = 75.0;
 		double amountOverdraft = 500.00;
@@ -18,30 +18,62 @@ public class BankTest {
 		myBankAccount.setLastName("Gunther");
 		myBankAccount.setAccountID(999);
 		
+		myCheckingAccount.setFirstName("Brian");
+		myCheckingAccount.setLastName("Gunther");
+		myCheckingAccount.setAccountID(999);
+		
 		// Initial balance should be zero
-		System.out.print("Testing Initial Balance: ");
+		System.out.println("*** Testing Initial Balances ***");
+		System.out.print("BankAccount: ");
 		checkMethod(myBankAccount.getBalance(), testBalance);
+		System.out.print("CheckingAccount: ");
+		checkMethod(myCheckingAccount.getBalance(), testBalance);
+		
+		System.out.println();
 		
 		// Test deposit method
-		System.out.print("Testing deposit: ");
+		System.out.println("*** Testing deposit ***");
 		myBankAccount.deposit(amountToAdd);
+		myCheckingAccount.deposit(amountToAdd);
 		testBalance += amountToAdd;
+		System.out.print("BankAccount: ");
 		checkMethod(myBankAccount.getBalance(), testBalance);
+		System.out.print("CheckingAccount: ");
+		checkMethod(myCheckingAccount.getBalance(), testBalance);
+		
+		System.out.println();
 		
 		// Test withdrawal method
-		System.out.print("Testing withdrawl: ");
+		System.out.println("*** Testing withdrawl ***");
 		testBalance -= amountToSubtract;
+		System.out.print("BankAccount: ");
 		try {
 			myBankAccount.withdrawal(amountToSubtract);
 		} catch(IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
+		myCheckingAccount.withdrawal(amountToSubtract);
 		checkMethod(myBankAccount.getBalance(), testBalance);
-
+		System.out.print("CheckingAccount: ");
+		checkMethod(myCheckingAccount.getBalance(), testBalance);
+		
+		System.out.println();
+		
+		// Test overdraft
+		System.out.println("*** Testing overdraft ***");
+		testBalance -= (amountOverdraft + myCheckingAccount.getOverdraftFee());
+		myCheckingAccount.withdrawal(amountOverdraft);
+		System.out.print("CheckingAccount: ");
+		checkMethod(myCheckingAccount.getBalance(), testBalance);
+		
+		System.out.println();
 		
 		// Test the summary method
+		System.out.println("*** Bank Account Summary ***");
 		myBankAccount.accountSummary();
-		
+		System.out.println();
+		System.out.println("*** Checking Account Summary ***");
+		myCheckingAccount.displayAccount();		
 	}
 	
 	/*
@@ -53,7 +85,7 @@ public class BankTest {
 		} else {
 			System.out.println("FAIL");
 		}
-		System.out.printf("Expected: %.2f / Actual: %.2f\n\n", checkValue, balance);
+		System.out.printf("Expected: %.2f / Actual: %.2f\n", checkValue, balance);
 	}
 
 }
